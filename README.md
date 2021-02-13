@@ -85,5 +85,5 @@ A template requires vmware tools because it is done Sysprep or Linuxprep to init
 When Linux, please also install Perl to the template.
 
 # License
-
+Since this is a fork of the https://github.com/sky-joker/molecule-vmware, we keep the license.
 The [MIT](https://github.com/sky-joker/molecule-vmware/blob/master/LICENSE) License.
