@@ -3,9 +3,9 @@ dependency:
   name: {{ cookiecutter.dependency_name }}
 driver:
   name: {{ cookiecutter.driver_name }}
-  vcenter_hostname: change me to vcsa hostname or ip addr
-  vcenter_username: administrator@vsphere.local
-  vcenter_password: change me to vcsa user password
+  proxmoxapi_hostname: change me to vcsa hostname or ip addr
+  proxmoxapi_username: administrator@vsphere.local
+  proxmoxapi_password: change me to vcsa user password
   validate_certs: false
   datacenter: change me to datacenter name of deploying an instance
   #esxi_hostname: change me to esxi hostname of deploying an instance. need it if not cluster specified

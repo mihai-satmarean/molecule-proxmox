@@ -19,22 +19,22 @@ Please also install pywinrm if you want to use Windows in test instance.
 pip install pywinrm
 ```
 
-Create a new role with molecule using the vmware driver:
+Create a new role with molecule using the proxmox driver:
 
 ```
-molecule init role <role_name> -d vmware
+molecule init role <role_name> -d proxmox
 ```
 
-Configure `<role_name>/molecule/default/molecule.yml` with required parameters based on your vSphere environment.  
+Configure `<role_name>/molecule/default/molecule.yml` with required parameters based on your proxmox environment.  
 A simple config is:
 
 ```yaml
 dependency:
   name: galaxy
 driver:
-  name: vmware
+  name: proxmox
   vcenter_hostname: vcsa.local
-  vcenter_username: administrator@vsphere.local
+  vcenter_username: administrator@proxmox.local
   vcenter_password: secret
   validate_certs: false
   datacenter: dc

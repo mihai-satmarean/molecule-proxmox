@@ -6,10 +6,10 @@ from molecule import logger, util
 LOG = logger.get_logger(__name__)
 
 
-class VMware(Driver):
+class Proxmox(Driver):
     def __init__(self, config=None):
         super(VMware, self).__init__(config)
-        self._name = "vmware"
+        self._name = "proxmox"
 
     @property
     def name(self):

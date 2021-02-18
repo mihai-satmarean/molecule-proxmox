@@ -7,4 +7,4 @@ Install
 
 .. code-block:: bash
 
-   $ pip install molecule-vmware
+   $ pip install molecule-proxmox

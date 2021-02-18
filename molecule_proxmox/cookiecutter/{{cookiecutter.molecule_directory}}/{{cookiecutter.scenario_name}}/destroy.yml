@@ -32,4 +32,34 @@
       until: server.finished
       delay: 10
       retries: 300
+
+# Remove VM
+- name: Destroy
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  no_log: "{{ molecule_no_log }}"
+  tasks:
+    - name: Destroy molecule instance(s)
+      proxmox_kvm:
+        api_user : "{{ molecule_yml.driver.proxmoxapi_username }}"
+        api_password: "{{ molecule_yml.driver.proxmoxapi_password }}"
+        api_host : "{{ molecule_yml.driver.proxmoxapi_hostname }}"
+        name : "{{ item.name }}"
+        node : "{{ default_proxmox_node }}"
+        state : absent
+        force: true
+      async: 7200
+      poll: 0
+      register: async_results
+
+
+    - name: Check the test instance destroying status
+      async_status:
+        jid: "{{ item.ansible_job_id }}"
+      loop: "{{ async_results.results }}"
+      register: server
+      until: server.finished
+      delay: 10
+      retries: 300
 {%- endraw %}
