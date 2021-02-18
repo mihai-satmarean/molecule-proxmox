@@ -17,6 +17,9 @@
     clone: "{{ item.template }}"
     memory: "{{ item.hardware.memory | default(omit) }}"
     vcpus: "{{ item.hardware.vcpus | default(omit) }}"
+    net: "{{ item.networks.net | default(omit) }}"
+    ipconfig: "{{ item.networks.ipconfig | default(omit) }}"
+    sshkeys: "{{ keypair_result.ssh_public_key }}"
     full: no
     timeout: 300
   tags: provission,test
