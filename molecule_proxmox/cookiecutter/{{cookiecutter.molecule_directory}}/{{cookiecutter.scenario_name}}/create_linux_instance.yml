@@ -22,7 +22,10 @@
     sshkeys: "{{ keypair_result.ssh_public_key }}"
     full: no
     timeout: 300
-  tags: provission,test
+  async: 7200
+  poll: 0
+  register: async_results
+  loop: "{{ molecule_yml.platforms }}"
 
 - name: Create molecule instance(s)
   vmware_guest:

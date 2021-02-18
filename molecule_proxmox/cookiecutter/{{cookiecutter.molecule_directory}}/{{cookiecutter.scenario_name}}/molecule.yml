@@ -12,9 +12,12 @@ driver:
   #esxi_hostname: change me to esxi hostname of deploying an instance. need it if not cluster specified
   #cluster: change me to cluster name of deploying an instance
   #folder: change me to foler name of deploying an instance(e.g. /vm/test)
-  vm_username: change me to guest os administrator user name
-  vm_password: change me to guest os user password
   instance_os_type: linux # is possible only specify [linux or windows]
+  ciuser: change me to guest os administrator user name
+  cipassword: change me to guest os user password
+  searchdomains: 'mydomain.internal'
+  nameservers: 1.1.1.1
+  sshkeys: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILJkVm98B71lD5XHfihwcYHE9TVpsJmK1vR1JcaU82L+'
   # The below are possible parameters to be specified if using the windows template.
   #winrm_port: 5986 # is WinRM port
   #connection: winrm # is the connection type
@@ -28,10 +31,10 @@ platforms:
       vcpus: 2 # is cpu number to be configured to an instance
       memory: 2048 # is memory size(MB) to be configured to an instance
     networks:
-      - name: VM Network # is a port group to be assigned to an instance
-        ip: 100.64.0.2 # is ip address to be configured to an instance
-        netmask: 255.255.255.0 # is netmask to be configured to an instance
-        gateway: 100.64.0.1 # is gateway to be configured to an instance
+      net:
+        net0: 'virtio,bridge=vmbr1,tag=77'
+      ipconfig:
+        ipconfig0: 'ip=192.168.1.1/24,gw=192.168.1.1'
     # The below are possible parameters to be specified if using the windows template.
     #customization:
     #  fullname: molecule # is the server owner name
