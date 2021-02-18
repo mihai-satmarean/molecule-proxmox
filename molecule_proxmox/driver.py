@@ -8,7 +8,7 @@ LOG = logger.get_logger(__name__)
 
 class Proxmox(Driver):
     def __init__(self, config=None):
-        super(VMware, self).__init__(config)
+        super(Proxmox, self).__init__(config)
         self._name = "proxmox"
 
     @property
