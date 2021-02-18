@@ -7,10 +7,11 @@ driver:
   proxmoxapi_username: administrator@vsphere.local
   proxmoxapi_password: change me to vcsa user password
   validate_certs: false
-  datacenter: change me to datacenter name of deploying an instance
+  node: change me to the default proxmox node
+  #datacenter: change me to datacenter name of deploying an instance
   #esxi_hostname: change me to esxi hostname of deploying an instance. need it if not cluster specified
-  cluster: change me to cluster name of deploying an instance
-  folder: change me to foler name of deploying an instance(e.g. /vm/test)
+  #cluster: change me to cluster name of deploying an instance
+  #folder: change me to foler name of deploying an instance(e.g. /vm/test)
   vm_username: change me to guest os administrator user name
   vm_password: change me to guest os user password
   instance_os_type: linux # is possible only specify [linux or windows]
@@ -24,8 +25,8 @@ platforms:
     template: change me to template name # is to be used as a template when cloning an instance
     #snapshot_src: change me to snapshot name # is a snapshot name to be possible specified if you want to use linked clone.
     hardware:
-      num_cpus: 2 # is cpu number to be configured to an instance
-      memory_mb: 2048 # is memory size(MB) to be configured to an instance
+      vcpus: 2 # is cpu number to be configured to an instance
+      memory: 2048 # is memory size(MB) to be configured to an instance
     networks:
       - name: VM Network # is a port group to be assigned to an instance
         ip: 100.64.0.2 # is ip address to be configured to an instance
