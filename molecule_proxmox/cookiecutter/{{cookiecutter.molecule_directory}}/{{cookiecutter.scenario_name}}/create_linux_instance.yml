@@ -7,6 +7,20 @@
     ssh_key_file: "{{ keypair_path }}"
   register: keypair_result
 
+- name: Cloning virtual machine from "{{ VM_template }}" with name "{{ VM_name }}" 
+  proxmox_kvm:
+    api_user : "{{ molecule_yml.driver.proxmoxapi_username }}"
+    api_password: "{{ molecule_yml.driver.proxmoxapi_password }}"
+    api_host : "{{ molecule_yml.driver.proxmoxapi_hostname }}"
+    name : "{{ item.name }}"
+    node : "{{ molecule_yml.driver.node }}"
+    clone: "{{ item.template }}"
+    memory: "{{ item.hardware.memory | default(omit) }}"
+    vcpus: "{{ item.hardware.vcpus | default(omit) }}"
+    full: no
+    timeout: 300
+  tags: provission,test
+
 - name: Create molecule instance(s)
   vmware_guest:
     hostname: "{{ molecule_yml.driver.vcenter_hostname }}"
